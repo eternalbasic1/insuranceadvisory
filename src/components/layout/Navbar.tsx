@@ -27,7 +27,7 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
-          : "bg-transparent"
+          : "bg-transparent",
       )}
     >
       <nav className="section-container flex h-16 items-center justify-between">
@@ -41,13 +41,17 @@ export function Navbar() {
             <span className="text-sm font-bold text-white">HD</span>
           </div>
           <div className="flex flex-col leading-none">
-            <span className={clsx(
-              "text-sm font-semibold transition-colors",
-              scrolled ? "text-slate-900" : "text-slate-900"
-            )}>
+            <span
+              className={clsx(
+                "text-sm font-semibold transition-colors",
+                scrolled ? "text-slate-900" : "text-slate-900",
+              )}
+            >
               House of Darmoji
             </span>
-            <span className="text-[10px] text-brand-600 font-medium tracking-wide">Advisory</span>
+            <span className="text-[10px] text-brand-600 font-medium tracking-wide">
+              Insurance Advisory
+            </span>
           </div>
         </Link>
 
@@ -61,7 +65,7 @@ export function Navbar() {
                 "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                 pathname === link.href
                   ? "text-brand-600 bg-brand-50"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100",
               )}
             >
               {link.label}
@@ -87,12 +91,32 @@ export function Navbar() {
           aria-expanded={menuOpen}
         >
           {menuOpen ? (
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
             </svg>
           )}
         </button>
@@ -102,7 +126,7 @@ export function Navbar() {
       <div
         className={clsx(
           "md:hidden overflow-hidden transition-all duration-300 bg-white border-b border-slate-100",
-          menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <div className="section-container py-4 flex flex-col gap-1">
@@ -114,14 +138,17 @@ export function Navbar() {
                 "px-4 py-3 rounded-xl text-sm font-medium transition-colors",
                 pathname === link.href
                   ? "text-brand-600 bg-brand-50"
-                  : "text-slate-700 hover:bg-slate-50"
+                  : "text-slate-700 hover:bg-slate-50",
               )}
             >
               {link.label}
             </Link>
           ))}
           <div className="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
-            <Link href="/contact" className="btn-secondary w-full justify-center">
+            <Link
+              href="/contact"
+              className="btn-secondary w-full justify-center"
+            >
               Request Policy Audit
             </Link>
             <Link href="/contact" className="btn-primary w-full justify-center">

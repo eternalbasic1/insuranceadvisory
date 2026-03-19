@@ -4,13 +4,15 @@ import { useState } from "react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
+const WEB3FORMS_KEY = "2a6b0662-8329-49f0-98a7-e012a29e94db";
+
 const serviceOptions = [
-  { value: "consultation", label: "Free Consultation (30 min)" },
-  { value: "audit", label: "Policy Health Check (Audit)" },
-  { value: "health", label: "Health Insurance Planning" },
-  { value: "term", label: "Term Life Insurance Planning" },
-  { value: "claim", label: "Claim Guidance & Support" },
-  { value: "other", label: "Other / Not Sure Yet" },
+  { value: "Free Consultation (30 min)", label: "Free Consultation (30 min)" },
+  { value: "Policy Health Check (Audit)", label: "Policy Health Check (Audit)" },
+  { value: "Health Insurance Planning", label: "Health Insurance Planning" },
+  { value: "Term Life Insurance Planning", label: "Term Life Insurance Planning" },
+  { value: "Claim Guidance & Support", label: "Claim Guidance & Support" },
+  { value: "Other / Not Sure Yet", label: "Other / Not Sure Yet" },
 ];
 
 export function ConsultationForm() {
@@ -23,11 +25,11 @@ export function ConsultationForm() {
     const data = new FormData(form);
 
     const values = {
-      name: data.get("name") as string,
-      phone: data.get("phone") as string,
-      email: data.get("email") as string,
-      service: data.get("service") as string,
-      message: data.get("message") as string,
+      name: (data.get("name") as string) ?? "",
+      phone: (data.get("phone") as string) ?? "",
+      email: (data.get("email") as string) ?? "",
+      service: (data.get("service") as string) ?? "",
+      message: (data.get("message") as string) ?? "",
     };
 
     // Client-side validation
@@ -46,10 +48,41 @@ export function ConsultationForm() {
     setErrors({});
     setStatus("submitting");
 
-    // Simulate API call — replace with actual Server Action or API endpoint
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    setStatus("success");
-    form.reset();
+    try {
+      // Build payload for Web3Forms
+      const payload = new FormData();
+      payload.append("access_key", WEB3FORMS_KEY);
+      payload.append("subject", `Advisory Request: ${values.service} — ${values.name}`);
+      payload.append("from_name", values.name);
+      payload.append("name", values.name);
+      payload.append("phone", `+91 ${values.phone}`);
+      if (values.email) {
+        payload.append("email", values.email);
+        payload.append("replyto", values.email);
+      }
+      payload.append("service_requested", values.service);
+      if (values.message) payload.append("message", values.message);
+      // Honeypot — must be empty for real submissions
+      payload.append("botcheck", "");
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: payload,
+      });
+
+      const result = await res.json();
+
+      if (res.ok && result.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        console.error("Web3Forms error:", result.message);
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error("Submission failed:", err);
+      setStatus("error");
+    }
   }
 
   if (status === "success") {
@@ -66,10 +99,10 @@ export function ConsultationForm() {
           your consultation slot. If you prefer a faster response, message directly on WhatsApp.
         </p>
         <a
-          href="https://wa.me/919999999999"
+          href="https://wa.me/918341510944"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary mt-6"
+          className="btn-primary mt-6 inline-flex"
         >
           Message on WhatsApp
         </a>
@@ -87,6 +120,9 @@ export function ConsultationForm() {
       </div>
 
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
+        {/* Honeypot — hidden from real users, catches bots */}
+        <input type="checkbox" name="botcheck" className="hidden" aria-hidden="true" />
+
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {/* Name */}
           <div>
@@ -110,7 +146,7 @@ export function ConsultationForm() {
               Mobile Number <span className="text-rose-500">*</span>
             </label>
             <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400 font-medium">
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400 font-medium select-none">
                 +91
               </span>
               <input
@@ -130,7 +166,7 @@ export function ConsultationForm() {
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">
             Email Address{" "}
-            <span className="text-slate-400 font-normal">(optional)</span>
+            <span className="text-slate-400 font-normal">(optional — for written summary)</span>
           </label>
           <input
             id="email"
@@ -147,8 +183,8 @@ export function ConsultationForm() {
           <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-1.5">
             What would you like help with? <span className="text-rose-500">*</span>
           </label>
-          <select id="service" name="service" className="form-input bg-slate-50">
-            <option value="">Select a service...</option>
+          <select id="service" name="service" defaultValue="" className="form-input bg-slate-50">
+            <option value="" disabled>Select a service...</option>
             {serviceOptions.map((opt) => (
               <option key={opt.value} value={opt.value}>
                 {opt.label}
@@ -201,7 +237,11 @@ export function ConsultationForm() {
 
           {status === "error" && (
             <p className="mt-3 text-sm text-rose-600">
-              Something went wrong. Please try WhatsApp or email instead.
+              Something went wrong. Please try{" "}
+              <a href="https://wa.me/918341510944" className="underline font-medium">
+                WhatsApp
+              </a>{" "}
+              or email instead.
             </p>
           )}
         </div>

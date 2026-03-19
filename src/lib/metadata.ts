@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://advisory.houseofdarmoji.com";
+const BASE_URL = "https://insuranceadvisory.houseofdarmoji.com";
 const SITE_NAME = "House of Darmoji Advisory";
 const DEFAULT_DESCRIPTION =
   "Independent insurance advisory platform offering transparent, education-first guidance on health insurance, term life, and policy audits. No pressure. Just clarity.";
