@@ -4,7 +4,7 @@ import { useState } from "react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-const WEB3FORMS_KEY = "2a6b0662-8329-49f0-98a7-e012a29e94db";
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
 
 const serviceOptions = [
   { value: "Free Consultation (30 min)", label: "Free Consultation (30 min)" },
