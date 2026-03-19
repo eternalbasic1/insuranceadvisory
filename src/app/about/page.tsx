@@ -44,11 +44,14 @@ export default function AboutPage() {
             <span className="badge badge-blue mb-4">About</span>
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl text-balance leading-tight">
               Built by a technologist.{" "}
-              <span className="gradient-text">Guided by a commitment to clarity.</span>
+              <span className="gradient-text">
+                Guided by a commitment to clarity.
+              </span>
             </h1>
             <p className="mt-6 text-xl text-slate-500 leading-relaxed text-balance">
-              House of Darmoji Advisory exists because most people deserve better than
-              what the traditional insurance distribution model offers them.
+              House of Darmoji Advisory exists because most people deserve
+              better than what the traditional insurance distribution model
+              offers them.
             </p>
           </div>
         </div>
@@ -59,39 +62,48 @@ export default function AboutPage() {
         <div className="section-container">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <div className="prose-custom space-y-5">
-              <h2 className="text-2xl font-bold text-slate-900">The advisory story</h2>
+              <h2 className="text-2xl font-bold text-slate-900">
+                The advisory story
+              </h2>
               <p className="text-slate-600 leading-relaxed">
-                Most people encounter insurance through agents whose incentives don't align
-                with their interests. Products are selected based on commission structures,
-                not coverage quality. Clients sign documents they don't fully understand.
-                And the first time they discover what their policy actually covers is when
-                they file a claim.
+                Most people encounter insurance through agents whose incentives
+                don't align with their interests. Products are selected based on
+                commission structures, not coverage quality. Clients sign
+                documents they don't fully understand. And the first time they
+                discover what their policy actually covers is when they file a
+                claim.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                This advisory practice was built to change that dynamic. As a certified
-                Policybazaar advisor with a software engineering background, the approach
-                here combines structured analytical thinking with domain knowledge to
-                give clients what they actually need: honest, specific, education-first guidance.
+                This advisory practice was built to change that dynamic. As a
+                certified Policybazaar advisor with a software engineering
+                background, the approach here combines structured analytical
+                thinking with domain knowledge to give clients what they
+                actually need: honest, specific, education-first guidance.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                House of Darmoji is a technology-first venture studio. Advisory is one of
-                its first verticals — chosen because it sits at the intersection of
-                financial literacy, trust, and technology, where the right application of
-                all three can genuinely improve someone's financial resilience.
+                House of Darmoji is a technology-first venture studio. Advisory
+                is one of its first verticals — chosen because it sits at the
+                intersection of financial literacy, trust, and technology, where
+                the right application of all three can genuinely improve
+                someone's financial resilience.
               </p>
             </div>
 
             <div className="space-y-5">
-              <h2 className="text-2xl font-bold text-slate-900">Why the technology background matters</h2>
+              <h2 className="text-2xl font-bold text-slate-900">
+                Why the technology background matters
+              </h2>
               <p className="text-slate-600 leading-relaxed">
-                Insurance decisions benefit from structured thinking. When you apply an
-                engineering mindset to policy analysis — breaking down clauses, modeling
-                claim scenarios, comparing edge cases — the picture becomes much clearer
-                than a generic premium comparison.
+                Insurance decisions benefit from structured thinking. When you
+                apply an engineering mindset to policy analysis — breaking down
+                clauses, modeling claim scenarios, comparing edge cases — the
+                picture becomes much clearer than a generic premium comparison.
               </p>
 
               <div className="rounded-2xl border border-brand-100 bg-brand-50 p-6 space-y-4 mt-6">
-                <h3 className="text-sm font-semibold text-brand-900">What this enables:</h3>
+                <h3 className="text-sm font-semibold text-brand-900">
+                  What this enables:
+                </h3>
                 {[
                   "Systematic analysis of policy documents, not surface-level comparisons",
                   "Scenario modeling for claim situations specific to your coverage",
@@ -99,8 +111,18 @@ export default function AboutPage() {
                   "Technology tools for future-ready advisory (in development)",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <svg className="h-4 w-4 text-brand-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    <svg
+                      className="h-4 w-4 text-brand-600 mt-0.5 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2.5}
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m4.5 12.75 6 6 9-13.5"
+                      />
                     </svg>
                     <p className="text-sm text-brand-800">{item}</p>
                   </div>
@@ -124,10 +146,16 @@ export default function AboutPage() {
             {values.map((value, i) => (
               <div key={i} className="card">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 mb-4">
-                  <span className="text-xs font-bold text-white">{(i + 1).toString().padStart(2, "0")}</span>
+                  <span className="text-xs font-bold text-white">
+                    {(i + 1).toString().padStart(2, "0")}
+                  </span>
                 </div>
-                <h3 className="text-base font-semibold text-slate-900 mb-2">{value.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{value.description}</p>
+                <h3 className="text-base font-semibold text-slate-900 mb-2">
+                  {value.title}
+                </h3>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {value.description}
+                </p>
               </div>
             ))}
           </div>
@@ -164,8 +192,12 @@ export default function AboutPage() {
                 },
               ].map((persona) => (
                 <div key={persona.title} className="card">
-                  <h3 className="text-sm font-semibold text-slate-900 mb-1.5">{persona.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{persona.desc}</p>
+                  <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+                    {persona.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    {persona.desc}
+                  </p>
                 </div>
               ))}
             </div>

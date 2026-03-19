@@ -13,7 +13,7 @@ import { insights } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Insurance Guidance. Not Sales Pressure.",
+  title: "Insurance Advisory",
   description:
     "Independent insurance advisory practice helping Indian professionals make informed decisions on health insurance, term life, and policy audits. Education-first. No pressure.",
   path: "/",
@@ -48,8 +48,18 @@ export default function HomePage() {
               className="flex items-center gap-1.5 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors flex-shrink-0"
             >
               View all insights
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                />
               </svg>
             </a>
           </div>
@@ -67,7 +77,10 @@ export default function HomePage() {
         title="Ready to understand your coverage clearly?"
         description="A 30-minute conversation can surface gaps you didn't know existed and give you the clarity to make decisions you're confident about. No obligation. No pressure."
         primaryCTA={{ label: "Book Free Consultation", href: "/contact" }}
-        secondaryCTA={{ label: "Request Policy Audit", href: "/contact?service=audit" }}
+        secondaryCTA={{
+          label: "Request Policy Audit",
+          href: "/contact?service=audit",
+        }}
         variant="default"
       />
     </>

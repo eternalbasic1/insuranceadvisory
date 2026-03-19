@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { navLinks } from "@/lib/data";
 
 const legalLinks = [
@@ -15,12 +16,16 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600">
-                <span className="text-sm font-bold text-white">HD</span>
-              </div>
+              <Image
+                src="/logo.png"
+                alt="House of Darmoji"
+                width={36}
+                height={36}
+                className="rounded-lg"
+              />
               <div className="flex flex-col leading-none">
                 <span className="text-sm font-semibold text-slate-900">House of Darmoji</span>
-                <span className="text-[10px] text-brand-600 font-medium tracking-wide">Advisory</span>
+                <span className="text-[10px] text-brand-600 font-medium tracking-wide">Insurance Advisory</span>
               </div>
             </Link>
             <p className="text-sm text-slate-500 leading-relaxed max-w-sm">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import { navLinks } from "@/lib/data";
@@ -37,16 +38,16 @@ export function Navbar() {
           className="flex items-center gap-2.5 group"
           aria-label="House of Darmoji Advisory — Home"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 shadow-sm group-hover:bg-brand-700 transition-colors">
-            <span className="text-sm font-bold text-white">HD</span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="House of Darmoji"
+            width={36}
+            height={36}
+            className="rounded-lg"
+            priority
+          />
           <div className="flex flex-col leading-none">
-            <span
-              className={clsx(
-                "text-sm font-semibold transition-colors",
-                scrolled ? "text-slate-900" : "text-slate-900",
-              )}
-            >
+            <span className="text-sm font-semibold text-slate-900 transition-colors">
               House of Darmoji
             </span>
             <span className="text-[10px] text-brand-600 font-medium tracking-wide">
